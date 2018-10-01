@@ -1,0 +1,127 @@
+<resources>
+    <!-- App title name -->
+    <string name="app_name">Inventory App</string>
+
+    <!-- Editor Activity Strings -->
+    <!-- Title for the activity to add a new product -->
+    <string name="editor_activity_title_new_product">Add a New Product</string>
+
+    <!-- Title for the activity to edit a product -->
+    <string name="editor_activity_title_edit_product">Edit a Product</string>
+
+    <!-- Label for editor: Product Name -->
+    <string name="editor_product_name">Product</string>
+
+    <!-- Label for editor: Product Price -->
+    <string name="editor_product_price">Price</string>
+
+    <!-- Label for editor: $ -->
+    <string name="unit_product_dollars">$</string>
+
+    <!-- Label for editor: qty -->
+    <string name="qty">qty</string>
+
+    <!-- Label for editor: sell -->
+    <string name="sell">sell</string>
+
+    <!-- Label for editor: Product Quantity -->
+    <string name="editor_product_quantity">Quantity</string>
+
+    <!-- Label for editor: Supplier Name -->
+    <string name="editor_supplier_name">Supplier</string>
+
+    <!-- Label for editor: Supplier Phone -->
+    <string name="editor_supplier_phone">Phone</string>
+
+    <!-- Text hint for editor: Product Name -->
+    <string name="hint_product_name">Name</string>
+
+    <!-- Text hint for editor: Product Price -->
+    <string name="hint_product_price">Price</string>
+
+    <!-- Text hint for editor: Product Quantity -->
+    <string name="hint_product_quantity">Quantity</string>
+
+    <!-- Text hint for editor: Supplier Name -->
+    <string name="hint_supplier_name">Name</string>
+
+    <!-- Text hint for editor: Supplier Phone -->
+    <string name="hint_supplier_phone">Phone</string>
+
+    <!-- Toast message if Insert Product is successful -->
+    <string name="insert_product_successful">Product saved</string>
+
+    <!-- Toast message if Insert Product fails -->
+    <string name="insert_product_failed">Error with saving product</string>
+
+    <!-- Toast message in editor when current product was successfully updated -->
+    <string name="editor_update_product_successful">Product updated</string>
+
+    <!-- Toast message in editor when current pet has failed to be deleted -->
+    <string name="editor_update_product_failed">Error with updating product</string>
+
+    <!-- Toast message in editor when current product was successfully deleted -->
+    <string name="editor_delete_product_successful">Product deleted</string>
+
+    <!-- Toast message in editor when current product has failed to be deleted -->
+    <string name="editor_delete_product_failed">Error with deleting product</string>
+
+    <!-- Dialog message: Leaving editor & haven't saved changes -->
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+
+    <!-- Dialog Button Text: Discard -->
+    <string name="discard">Discard</string>
+
+    <!-- Dialog Button Text: Keep Editing -->
+    <string name="keep_editing">Keep Editing</string>
+
+    <!-- Dialog message: Confirm deletion -->
+    <string name="delete_dialog_msg">Delete this product?</string>
+
+    <!-- Dialog Button Text: Delete -->
+    <string name="delete">Delete</string>
+
+    <!-- Dialog Button Text: Cancel -->
+    <string name="cancel">Cancel</string>
+
+    <!-- Increment Button Text: + -->
+    <string name="button_label_increment">+</string>
+
+    <!-- Decrement Button Text: - -->
+    <string name="button_label_decrement">-</string>
+
+    <!-- Order Button Text: Order -->
+    <string name="button_label_order">ORDER</string>
+
+    <!-- Toast: Unable to make call -->
+    <string name="unable_to_call">Unable to make call at this time</string>
+
+    <!-- Label for editor menu option to save product and leave editor -->
+    <string name="action_save">Save</string>
+
+    <!-- Label for editor overflow menu option that deletes the current product -->
+    <string name="action_delete">Delete</string>
+
+    <!-- Title text for the empty view -->
+    <string name="empty_view_title_text">No items in inventory</string>
+
+    <!-- Subtitle text for the empty view -->
+    <string name="empty_view_subtitle_text">Get started by adding a product</string>
+
+    <!-- Label for overflow menu option that inserts fake pet data into the app [CHAR LIMIT=20] -->
+    <string name="action_insert_dummy_data">Insert Dummy Data</string>
+
+    <!-- Label for overflow menu option that deletes all pet data in the app [CHAR LIMIT=20] -->
+    <string name="action_delete_all_entries">Delete All Products</string>
+
+    <!-- Toast message: Item out of stock  -->
+    <string name="out_of_stock">Item out of stock</string>
+
+    <!-- Toast message: Product sold -->
+    <string name="sale_success">Product sold</string>
+
+    <!-- Toast message: Sale incomplete  -->
+    <string name="sale_failed">Sale incomplete</string>
+
+
+</resources>
