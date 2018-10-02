@@ -142,7 +142,7 @@ public class EditorActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 EditText phoneEditText = (EditText) findViewById(R.id.edit_supplier_phone);
                 String phone = phoneEditText.getText().toString();
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("Telephone: " + phone));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: " + phone));
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
                 } else {
