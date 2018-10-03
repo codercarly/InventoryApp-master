@@ -56,6 +56,13 @@ public class EditorActivity extends AppCompatActivity implements
     /** Boolean flag that keeps track of whether the product has been edited (true) or not (false) */
     private boolean mProductHasChanged = false;
 
+    /** Variables for product info */
+    private String nameString;
+    private String priceString;
+    private String quantityString;
+    private String supplierString;
+    private String phoneString;
+
     /**
      * OnTouchListener that listens for any user touches on a View, implying that they are modifying the
      * view. Change the mProductHasChanged to true.
@@ -161,17 +168,41 @@ public class EditorActivity extends AppCompatActivity implements
     }
 
     /**
+     * Check if user data is valid
+     */
+    private boolean isValid() {
+        // Read from input fields
+        // Use trim to eliminate leading or trailing white space
+        nameString = mNameEditText.getText().toString().trim();
+        priceString = mPriceEditText.getText().toString().trim();
+        quantityString = mQuantityTextView.getText().toString().trim();
+        supplierString = mSupplierNameEditText.getText().toString().trim();
+        phoneString = mSupplierPhoneEditText.getText().toString().trim();
+
+        if (TextUtils.isEmpty(nameString)) {
+            Toast.makeText(this, getString(R.string.name_required), Toast.LENGTH_LONG).show();
+            return false;
+        } else if (TextUtils.isEmpty(priceString)) {
+            Toast.makeText(this, getString(R.string.name_required), Toast.LENGTH_LONG).show();
+            return false;
+        } else if (TextUtils.isEmpty(quantityString)) {
+            Toast.makeText(this, getString(R.string.quantity_required), Toast.LENGTH_LONG).show();
+            return false;
+        } else if (TextUtils.isEmpty(supplierString)) {
+            Toast.makeText(this, getString(R.string.supplier_required), Toast.LENGTH_LONG).show();
+            return false;
+        } else if (TextUtils.isEmpty(phoneString)) {
+            Toast.makeText(this, getString(R.string.phone_required), Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Get user input from editor and save product into database
      */
     private void saveProduct() {
-        // Read from input fields
-        // Use trim to eliminate leading or trailing white space
-        String nameString = mNameEditText.getText().toString().trim();
-        String priceString = mPriceEditText.getText().toString().trim();
-        String quantityString = mQuantityTextView.getText().toString().trim();
-        String supplierString = mSupplierNameEditText.getText().toString().trim();
-        String phoneString = mSupplierPhoneEditText.getText().toString().trim();
-
         // Check if this is supposed to be a new product
         // and check if all the fields in the editor are blank.
         if (mCurrentProductUri == null && TextUtils.isEmpty(nameString)
@@ -190,28 +221,29 @@ public class EditorActivity extends AppCompatActivity implements
         values.put(InventoryEntry.COLUMN_SUPPLIER_NAME, supplierString);
         values.put(InventoryEntry.COLUMN_SUPPLIER_PHONE, phoneString);
 
-        // If the price or quantity or phone is not provided by the user, don't try to parse the string
-        // into an integer value. Use 0 by default.
-        int price = 0;
-        int quantity = 0;
-        int phone = 0;
-        // Price
-        if(!TextUtils.isEmpty(priceString)) {
-            price = Integer.parseInt(priceString);
-        }
-        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, price);
-        // Quantity
-        if(!TextUtils.isEmpty(quantityString)) {
-            quantity = Integer.parseInt(quantityString);
-        }
-        values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, quantity);
-        // Phone
-        if(!TextUtils.isEmpty(phoneString)) {
-            phone = Integer.parseInt(phoneString);
-        }
-        values.put(InventoryEntry.COLUMN_SUPPLIER_PHONE, phone);
 
-        // Determine if this is a new or exisiting product by checking if the MCurrentProductUri is
+//        // If the price or quantity or phone is not provided by the user, don't try to parse the string
+//        // into an integer value. Use 0 by default.
+//        int price = 0;
+//        int quantity = 0;
+//        int phone = 0;
+//        // Price
+//        if(!TextUtils.isEmpty(priceString)) {
+//            price = Integer.parseInt(priceString);
+//        }
+//        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, price);
+//        // Quantity
+//        if(!TextUtils.isEmpty(quantityString)) {
+//            quantity = Integer.parseInt(quantityString);
+//        }
+//        values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, quantity);
+//        // Phone
+//        if(!TextUtils.isEmpty(phoneString)) {
+//            phone = Integer.parseInt(phoneString);
+//        }
+//        values.put(InventoryEntry.COLUMN_SUPPLIER_PHONE, phone);
+
+        // Determine if this is a new or existing product by checking if the MCurrentProductUri is
         // null or not.
         if (mCurrentProductUri == null) {
             // This is a new product, so insert a new product into the provider,
@@ -275,11 +307,16 @@ public class EditorActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
-                // Save pet to database
-                saveProduct();
-                // Exit activity
-                finish();
-                return true;
+                if (isValid()) {
+                    // Save product to database
+                    saveProduct();
+                    // Exit activity
+                    finish();
+                    return true;
+                } else {
+                    return false;
+                }
+
             // Respond to a click on the "Delete" menu option
             case R.id.action_delete:
                 // Pop up confirmation dialog for deletion
